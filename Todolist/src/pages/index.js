@@ -9,10 +9,12 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const detailsRef = useRef(null);
 
+  const apiUrl = process.env.REACT_APP_API_URL || "https://todolist-z3c0.onrender.com"; // Fallback to deployed URL
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/todos");
+        const response = await fetch(`${apiUrl}/todos`);
         const data = await response.json();
         setTasks(data);
       } catch (error) {
@@ -21,14 +23,14 @@ export default function Home() {
     };
 
     fetchTasks();
-  }, []);
+  }, [apiUrl]);
 
   const handleDelete = async (index) => {
     const taskToDelete = tasks[index];
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/todos/${taskToDelete._id}`,
+        `${apiUrl}/todos/${taskToDelete._id}`,
         { method: "DELETE" }
       );
 
@@ -60,7 +62,7 @@ export default function Home() {
         const taskToUpdate = tasks[editingIndex];
 
         const response = await fetch(
-          `http://localhost:5000/api/todos/${taskToUpdate._id}`,
+          `${apiUrl}/todos/${taskToUpdate._id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -76,7 +78,7 @@ export default function Home() {
           setEditingIndex(null);
         }
       } else {
-        const response = await fetch("http://localhost:5000/api/todos", {
+        const response = await fetch(`${apiUrl}/todos`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ title, description: formattedDetails }),
@@ -148,7 +150,7 @@ export default function Home() {
             tasks.map((task, index) => (
               <div key={index} className="box">
                 <h3>{task.title}</h3>
-                <p>Created at: {formatDate(task.createdAt)}</p> {/* Display formatted date */}
+                <p>Created at: {formatDate(task.createdAt)}</p>
                 
                 <div className="link-container">
                   <a
