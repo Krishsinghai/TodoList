@@ -1,0 +1,321 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Layout Container */
+.container {
+  display: flex;
+  gap: 20px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Form Section */
+.form {
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  overflow-y: auto;
+  width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Tasks Section */
+.tasks {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tasks:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar Styling */
+.form::-webkit-scrollbar,
+.tasks::-webkit-scrollbar {
+  width: 5px;
+}
+
+.form::-webkit-scrollbar-thumb,
+.tasks::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+}
+
+/* Input Fields */
+.form input[type="text"],
+.form textarea,
+.form input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form input[type="text"]:focus,
+.form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit Button */
+.form input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form input[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Tasks Section */
+.tasks-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-icon {
+  width: 40px;
+  height: auto;
+  margin-left: auto; /* Move icon to the right */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.task-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Task Box */
+.box {
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  color: #222;
+  position: relative;
+  padding-bottom: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.box:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.toolbar button {
+  background: transparent;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.toolbar button:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Editable Box */
+.editable-box {
+  min-height: 100px;
+  border: 1px solid #ccc;
+  padding: 30px;
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 6px;
+  height: 340px;
+  overflow-y: auto;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.editable-box:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.editable-box ul,
+.editable-box ol {
+  margin: 0;
+  padding-left: 20px;
+  list-style-position: inside;
+}
+
+.editable-box li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+.link-container {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.link-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.link-container a:hover {
+  color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h2 {
+  margin: 0;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #007bff;
+  transform: translateY(-2px);
+}
+/* Hide "Back to Tasks" button by default */
+.back-to-tasks-button {
+  display: none;
+}
+
+/* Mobile View */
+/* Mobile View */
+/* Mobile View */
+@media (max-width: 768px) {
+  .form {
+    display: none; /* Hide form by default in mobile view */
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-radius: 0; /* Remove border radius for full-screen effect */
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .form.active {
+    display: block; /* Show form when active */
+  }
+
+  .tasks {
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    padding: 10px;
+  }
+
+  .tasks.hidden {
+    display: none; /* Hide tasks when form is active */
+  }
+
+  .back-to-tasks-button {
+    display: block; /* Show the button in mobile view */
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .back-to-tasks-button:hover {
+    background-color: #0056b3;
+  }
+}
