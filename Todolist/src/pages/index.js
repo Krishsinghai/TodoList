@@ -4,7 +4,6 @@ import { Bold, Italic, Underline, List, AlignLeft, AlignCenter, AlignRight } fro
 export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
-  const [details, setDetails] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const detailsRef = useRef(null);
