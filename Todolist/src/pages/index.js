@@ -4,16 +4,15 @@ import { Bold, Italic, Underline, List, AlignLeft, AlignCenter, AlignRight } fro
 export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
+  const [details, setDetails] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const detailsRef = useRef(null);
 
-  const apiUrl = process.env.REACT_APP_API_URL || "https://todolist-z3c0.onrender.com"; // Fallback to deployed URL
-
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch(`${apiUrl}/todos`);
+        const response = await fetch("http://localhost:5000/api/todos");
         const data = await response.json();
         setTasks(data);
       } catch (error) {
@@ -22,14 +21,14 @@ export default function Home() {
     };
 
     fetchTasks();
-  }, [apiUrl]);
+  }, []);
 
   const handleDelete = async (index) => {
     const taskToDelete = tasks[index];
 
     try {
       const response = await fetch(
-        `${apiUrl}/todos/${taskToDelete._id}`,
+        `http://localhost:5000/api/todos/${taskToDelete._id}`,
         { method: "DELETE" }
       );
 
@@ -61,7 +60,7 @@ export default function Home() {
         const taskToUpdate = tasks[editingIndex];
 
         const response = await fetch(
-          `${apiUrl}/todos/${taskToUpdate._id}`,
+          `http://localhost:5000/api/todos/${taskToUpdate._id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -77,7 +76,7 @@ export default function Home() {
           setEditingIndex(null);
         }
       } else {
-        const response = await fetch(`${apiUrl}/todos`, {
+        const response = await fetch("http://localhost:5000/api/todos", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ title, description: formattedDetails }),
@@ -149,7 +148,7 @@ export default function Home() {
             tasks.map((task, index) => (
               <div key={index} className="box">
                 <h3>{task.title}</h3>
-                <p>Created at: {formatDate(task.createdAt)}</p>
+                <p>Created at: {formatDate(task.createdAt)}</p> {/* Display formatted date */}
                 
                 <div className="link-container">
                   <a
